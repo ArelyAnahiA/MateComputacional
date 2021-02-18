@@ -1,0 +1,181 @@
+\documentclass[12pt,a4paper]{article} 
+
+
+\usepackage[spanish]{babel} 
+\usepackage[utf8]{inputenc}
+\usepackage[numbers,sort&compress]{natbib} 
+\usepackage{graphicx} 
+\usepackage{amsfonts}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{listings}
+\usepackage[usenames,dvipsnames]{color}
+
+
+
+\title{Matemáticas Computacionales \\ Práctica 1: Gráficas de curvas en R} 
+\author{Arely Anahi Alvarado Solis \\ 1904628} 
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Curvas de $\mathbb{R}^2$} \label{sec:curvas}
+
+\subsection{Línea recta} \label{subsec:linearecta}
+Llamamos línea recta a1 lugar geométrico de 1os puntos tales que tomados dos puntos diferentes cualesquiera del lugar , el valor de la pendiente m resulta siempre constante.
+\citep{geometria}
+Partiendo de la ecuación general de la linea recta
+\begin{equation}
+Ax + By + C = 0, \label{eq:recta}
+\end{equation}
+Se graficará en R. La ecuación (\ref{eq:recta}) se utilizara en su forma pendiente intersección para poder codificar más facil.
+\begin{equation}
+y = mx + b \label{eq:pendienteinterseccion}
+\end{equation}
+
+Véase las figuras (\ref{fig:recta-1}) y (\ref{fig:recta-2})
+
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{LineaRecta1.png}
+\caption{Linea Recta con pendiente -1 y con intersección en 0.}
+\label{fig:recta-1}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{LineaRecta2}
+\caption{Linea Recta con pendiente 1 y con intersección en 8.}
+\label{fig:recta-2}
+\end{figure}
+
+
+
+\newpage
+\subsection{Parábola} \label{subsec:parabola}
+
+Una parábola es el lugar geometrico de un punto que se mueve en un plano de tal manera que su distancia de una recta fija, situada en el plano, es siempre igual a su distancia de un punto fijo del plano y que no pertenece a la recta.
+El punto fijo se llama foco y la recta fija directriz de la parábola.
+
+Para gráficar la parábola lo haremos de otra forma distinta que sera utilizando la ecuación (\ref{eq:parabola}), si forma general. Veamos como lo codificaremos.
+\begin{equation}
+y = Ax^2 + Bc + C \label{eq:parabola}
+\end{equation}
+
+Véase las figuras (\ref{fig:parabola-1}) y (\ref{fig:parabola-2})
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{Parabola1}
+\caption{Gráfica de la ecuación $y = 3x^2 + 6x - 3$.}
+\label{fig:parabola-1}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{Parabola2}
+\caption{Gráfica de la ecuación $y = x^2 + 2x$.}
+\label{fig:parabola-2}
+\end{figure}
+
+
+\newpage
+\subsection{Circunferencia} \label{subsec:circunferencia}
+
+La circunferencia es el lugar geométrico de un punto que se mueve a un plano de tal manera que se conserva siempre a una distancia constante de un punto fijo de ese plano. El punto fijo se llama centro de la circunferencia, y la distancia constante se llama radio.
+
+Dada la ecuación ordinaria de circunferencia
+\begin{equation}
+(x - h)^2 + (y - k)^2 = r^2, \label{eq:circunferencia}
+\end{equation}
+donde $(h, k)$ es el centro y $r$ es el radio. Utilizando estos datos graficaremos la circunferencia. Primero la ecuación (\ref{eq:circunferencia}) la despejaremos con respecto a $y$ obteniendo las dos ecuaciones:
+\begin{equation}
+y = k \pm \sqrt{r^2 - (x - h)^2}, \label{eq:circdespejada}
+\end{equation}
+restringiendo el dominio en $x \in [h - r, h + r]$. Se codifica una función que reciba todos estos datos como entrada y arroje como salida la gráfica de la circunferencia con centro en $(h, k)$ y radio $r$.
+
+Véase las figuras (\ref{fig:circunferencia-1}) y (\ref{fig:circunferencia-2})
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{Circunferencia1}
+\caption{Gráfica de una circunferencia con centro en (1, 1) y radio 1.}
+\label{fig:circunferencia-1}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{Circunferencia2}
+\caption{Gráfica de una circunferencia con centro en (2, 2) y radio 2.}
+\label{fig:circunferencia-2}
+\end{figure}
+
+\newpage
+\subsection{Elipse}
+
+Una elipse es el lugar geométrico de un punto que se mueve en un plano de tal manera que la suma de sus distancias a dos puntos fijos de ese plano siempre es igual a una constante, mayor que la distancia entre los dos puntos.
+
+Partiendo de la ecuación ordinario de la elipse se obtiene despejando con respecto a $y$:
+\begin{equation}
+y = k \pm \sqrt{b^2 - \frac{b^2}{a^2}(x - h)^2} \label{eq:elipse}
+\end{equation}
+con dominio $x \in [h - a, h + a]$ ó $x \in [h - b, h + b]$ según el caso. 
+
+Véase las figuras (\ref{fig:elipse-1}) y (\ref{fig:elipse-2})
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{Elipse1}
+\caption{Gráfica de una elipse con $c(2, 2)$ , $a = 25$ y $b = 9$.}
+\label{fig:elipse-1}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{Elipse2}
+\caption{Gráfica de una elipse con $c(2, 3)$ , $a = 9$ y $b = 4$.}
+\label{fig:elipse-2}
+\end{figure}
+
+
+\newpage
+\subsection{Hipérbola}
+
+Una hipérbola es el lugar geométrico de un punto que se mueve en un plano de tal manera que el valor absoluto de la diferencia de sus distancias a dos puntos fijos del plano, llamados focos, es siempre igual a una cantidad constante, positiva y menor que la distancia entre los focos.
+
+Para la hipérbola utilizaremos dos formas para graficarla. Si la hipérbola es horizontal, se utilizara la ecuación:
+\begin{equation}
+y = k \pm \sqrt{\frac{b^2}{a^2}(x - h)^2 - b^2}, \label{eq:hiperbolah}
+\end{equation}
+el dominio para gráficar considerado es $x \in [h - (a + 3), h - a] \cup [h + a, h + (a + 3)]$ y para una hipérbola vertical evaluaremos con el rango y utilizando la ecuación:
+\begin{equation}
+x = h \pm \sqrt{\frac{b^2}{a^2}(y - k)^2 - b^2}, \label{eq:hiperobolav}
+\end{equation}
+con rango de evaluación $y \in [k - (a + 3), k - a] \cup [k + a, k + (a + 3)]$.
+
+Véase las figuras (\ref{fig:hiperbola-1}) y (\ref{fig:hiperbola-2})
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{Hiperbola1}
+\caption{Gráfica de una hipérbola con $h = 1$ , $k = 1$, $a = 9$ y $b = 4$.}
+\label{fig:hiperbola-1}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{Hiperbola2}
+\caption{Gráfica de una hipérbola con $h = 2$, $k = 2$, $a = 1$ y $b = 2$.}
+\label{fig:hiperbola-2}
+\end{figure}
+
+
+
+\newpage
+Ver códigos en el repositorio de Github \citep{repositorio}
+
+\bibliography{Biblio}
+\bibliographystyle{plainnat}
+
+\end{document}
